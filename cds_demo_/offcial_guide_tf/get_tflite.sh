@@ -16,3 +16,5 @@ iree-compile \
     ${IMPORT_PATH} \
     -o ${MODULE_PATH}
 
+# excute
+iree-run-module --device=local-task --module=module.vmfb --input="1x192x192x3xi8=0"

@@ -1,0 +1,92 @@
+{
+    "cmake.default.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureArgs": [
+        "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+        "-DIREE_ENABLE_ASSERTIONS=ON",
+        "-DIREE_ENABLE_SPLIT_DWARF=ON",
+        "-DIREE_ENABLE_LLD=ON",
+        "-DCMAKE_C_COMPILER_LAUNCHER=ccache",
+        "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/clang++",
+        "-DCMAKE_C_COMPILER=/usr/bin/clang",
+        "-DIREE_BUILD_PYTHON_BINDINGS=ON",
+        "-DPython3_EXECUTABLE=/opt/anaconda3/envs/iree/bin/python",
+        "-DCMAKE_INSTALL_PREFIX=/usr/local/cds_bin",
+        "-DIREE_EMBED_RELEASE_INFO=ON",
+        "-DIREE_TARGET_BACKEND_DEFAULTS=OFF",
+        "-DIREE_TARGET_BACKEND_LLVM_CPU=ON",
+        "-DIREE_HAL_DRIVER_DEFAULTS=OFF",
+        "-DIREE_HAL_DRIVER_LOCAL_SYNC=ON",
+        "-DIREE_HAL_DRIVER_LOCAL_TASK=ON"
+    ],
+    "files.watcherExclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "build": true,
+        "**/build": true,
+        "**/cmake-build-debug": true,
+        "**/cmake-build-release": true,
+        "tests": true,
+        "third_party": true,
+        "runtime": true,
+        "experimental": true
+    },
+    "cmake.generator": "Ninja",
+    "clangd.arguments": [
+        "--background-index",
+        "--completion-style=bundled",
+        "--header-insertion=never"
+    ],
+    "C_Cpp.suggestSnippets": false,
+    "C_Cpp.autocomplete": "disabled",
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.configurationWarnings": "disabled",
+    "C_Cpp.intelliSenseEngine": "disabled",
+
+    "cmake.options.statusBarVisibility": "visible",
+    "cmake.options.advanced": {
+        "build": {
+            "statusBarVisibility": "inherit",
+            "inheritDefault": "visible"
+        },
+        "launch": {
+            "statusBarVisibility": "icon",
+            "inheritDefault": "visible"
+        },
+        "debug": {
+            "statusBarVisibility": "icon",
+            "inheritDefault": "visible"
+        },
+        "kit": {
+            "statusBarVisibility": "compact",
+            "statusBarLength": 10
+        },
+        "ctest": {
+            "statusBarVisibility": "hidden"
+        },
+        "cpack": {
+            "statusBarVisibility": "hidden"
+        },
+        "workflow": {
+            "statusBarVisibility": "hidden"
+        },
+        "launchTarget": {
+            "statusBarVisibility": "visible"
+        }
+    },
+    "cmake.automaticReconfigure": false,
+    "cmake.autoSelectActiveFolder": false,
+    "cmake.buildArgs": [],
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.debugConfig": {
+        "args": ["-first", "-second"]
+    },
+
+    "cmake.configureEnvironment": {},
+    "cmake.buildEnvironment": {},
+    "restructuredtext.pythonRecommendation.disabled": true
+}

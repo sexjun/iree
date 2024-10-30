@@ -1,0 +1,39 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        // debug compile
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "compile-debugger",
+            "program": "${workspaceFolder}/build/tools/iree-compile",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--iree-hal-target-backends",
+                "llvm-cpu",
+                "/Users/chendongsheng/github/iree/cds_demo_/offcial_guide_tf/model.mlir", // input file
+                "-o",
+                "/Users/chendongsheng/github/iree/cds_demo_/offcial_guide_tf/model_xxx.vmfb" // output file
+            ],
+        },
+        // debug run time
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "runtime-debugger",
+            "program": "${workspaceFolder}/build/tools/iree-run-module",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--device",
+                "local-task",
+                "--module",
+                "", // input file
+                "--input",
+                "1x1x1x1xi8=0" // output file
+            ],
+        },
+    ]
+}
