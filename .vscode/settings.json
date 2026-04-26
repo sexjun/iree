@@ -1,0 +1,100 @@
+{
+    "cmake.configureArgs": [
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DIREE_ENABLE_ASSERTIONS=ON",
+        "-DIREE_ENABLE_SPLIT_DWARF=ON",
+        "-DIREE_ENABLE_THIN_ARCHIVES=ON",
+        "-DCMAKE_C_COMPILER=/usr/local/Cellar/llvm/22.1.2/bin/clang",
+        "-DCMAKE_CXX_COMPILER=/usr/local/Cellar/llvm/22.1.2/bin/clang++",
+        "-DIREE_ENABLE_LLD=ON",
+        "-DCMAKE_C_COMPILER_LAUNCHER=ccache",
+        "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache",
+        "-DIREE_TARGET_BACKEND_DEFAULTS=OFF",
+        "-DIREE_TARGET_BACKEND_LLVM_CPU=ON",
+        "-DIREE_HAL_DRIVER_DEFAULTS=OFF",
+        "-DIREE_HAL_DRIVER_LOCAL_SYNC=ON",
+        "-DIREE_HAL_DRIVER_LOCAL_TASK=ON",
+        "-DIREE_BUILD_PYTHON_BINDINGS=ON",
+        "-DPython3_EXECUTABLE=/Users/alanchen/miniconda3/envs/llm/bin/python",
+        "-DCMAKE_INSTALL_PREFIX=/home/alanchen/workspace/iree/install_debug",
+    ],
+    "cmake.installPrefix": "/home/alanchen/workspace/iree/install_debug",
+    "cmake.buildBeforeRun": false,
+    "cmake.debugConfig": {
+        // iree compile
+        "program": "/home/alanchen/workspace/iree/build/bin/iree-compile",
+        "args": [
+            "/Users/alanchen/workspace/iree/alan_iree/converted_mlir/simpy_conv/simpy_conv.mlir",
+            "--iree-hal-target-device=local",
+            "--iree-hal-local-target-device-backends=llvm-cpu",
+            "--iree-llvmcpu-target-cpu=host",
+            "--iree-hal-dump-executable-files-to=/Users/alanchen/workspace/iree/alan_iree/debug_dumps/simpy_conv/dump_executeable",
+            "--iree-hal-dump-executable-intermediates-to=/Users/alanchen/workspace/iree/alan_iree/debug_dumps/simpy_conv/intermediates",
+            "--iree-hal-dump-executable-sources-to=/Users/alanchen/workspace/iree/alan_iree/debug_dumps/simpy_conv/exe-sources",
+            "--iree-hal-dump-executable-binaries-to=/Users/alanchen/workspace/iree/alan_iree/debug_dumps/simpy_conv/exe-binaries",
+            "--dump-compilation-phases-to=/Users/alanchen/workspace/iree/alan_iree/debug_dumps/simpy_conv/phases",
+            "--mlir-print-ir-after-all",
+            "--mlir-print-ir-tree-dir=/Users/alanchen/workspace/iree/alan_iree/debug_dumps/simpy_conv/print_ir",
+            "-o",
+            "/Users/alanchen/workspace/iree/alan_iree/compiled_vmfb/simple_conv2d.vmfb",
+            "--time-passes",
+            // "--log-actions-to=-",
+            "2>",
+            "/Users/alanchen/workspace/iree/alan_iree/debug_dumps/simpy_conv/simpy_conv2d.log"
+        ],
+        // iree run module
+        // "program": "/home/alanchen/workspace/iree/build_debug/bin/iree-run-module",
+        // "args": [
+        //     "--module=/home/alanchen/workspace/iree/alanchen_test/mobilenetv2-12-batch1.vmfb",
+        //     "--device=local-task",
+        //     "--function=torch-jit-export",
+        //     "--input=\"1x3x224x224xf32=2\"",
+        // ]
+    },
+    "highlightwords.colors": [
+        {
+            "light": "#b3d9ff",
+            "dark": "cyan"
+        },
+        {
+            "light": "#e6ffb3",
+            "dark": "pink"
+        },
+        {
+            "light": "#b3b3ff",
+            "dark": "lightgreen"
+        },
+        {
+            "light": "#ffd9b3",
+            "dark": "magenta"
+        },
+        {
+            "light": "#ffb3ff",
+            "dark": "cornflowerblue"
+        },
+        {
+            "light": "#b3ffb3",
+            "dark": "orange"
+        },
+        {
+            "light": "#ffff80",
+            "dark": "green"
+        },
+        {
+            "light": "#d1e0e0",
+            "dark": "red"
+        }
+    ],
+    "highlightwords.box": {
+        "light": false,
+        "dark": true
+    },
+    "highlightwords.defaultMode": {
+        "default": 0
+    },
+    "highlightwords.showSidebar": {
+        "default": true
+    },
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda"
+}

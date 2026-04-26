@@ -1,0 +1,14 @@
+# ONNX models (large binary files)
+models/*.onnx
+
+# MLIR conversion output
+converted_mlir/
+
+# IREE compiled bytecode
+compiled_vmfb/
+
+# Test input data
+test_data/
+
+# Debug dumps (IR phases, intermediates, etc.)
+debug_dumps/
