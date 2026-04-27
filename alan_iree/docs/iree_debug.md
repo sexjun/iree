@@ -104,6 +104,9 @@ iree-compile model.mlir \
 iree-opt model.mlir --mlir-print-op-generic
 ```
 
+### 1.8 debug日志
+
+编译为debug模式,并且iree-compiler 添加 debug 的参数,则可以打印出来日志, IREE使用了LLVM的日志系统
 ---
 
 ## 2. ONNX 导入调试
@@ -197,6 +200,7 @@ python -m iree.compiler.tools.import_onnx \
 ```
 
 如果导入失败，检查：
+
 - ONNX opset 版本是否支持（常用 `--opset-version 17`）
 - 是否有不支持的算子
 - 动态 Shape 是否正确
@@ -256,6 +260,7 @@ iree-run-module \
 ```
 
 输出：
+
 ```
 [[ iree_hal_allocator_t memory statistics ]]
   HOST_LOCAL:         3200B peak /         3200B allocated
@@ -362,6 +367,7 @@ print("Function:", vm_func)
 **原因**：使用了废弃的编译参数。
 
 **解决**：确保使用正确的编译参数：
+
 ```bash
 --iree-hal-target-device=local \
 --iree-hal-local-target-device-backends=llvm-cpu \
@@ -375,6 +381,7 @@ print("Function:", vm_func)
 **原因**：函数名不对。ONNX 转换后的模型通常使用原始 ONNX 模型名。
 
 **排查**：
+
 ```bash
 python -c "
 from iree.runtime import VmModule, SystemContext
@@ -385,6 +392,7 @@ print(list(vm.function_names))
 ```
 
 常见函数名：
+
 - `mxnet_converted_model`（完整 ResNet50）
 - `mxnet_converted_model_extracted`（提取的层）
 
@@ -395,6 +403,7 @@ print(list(vm.function_names))
 **错误**：`Input shape mismatch: expected [1, 3, 224, 224], got [1, 3, 299, 299]`
 
 **排查**：
+
 ```bash
 # 查看 ONNX 模型实际输入 shape
 python -c "
@@ -411,6 +420,7 @@ for inp in m.graph.input:
 **原因**：成功编译时默认无输出，这是正常行为。
 
 **获取详细信息**：
+
 ```bash
 # 添加时间统计
 --time-passes

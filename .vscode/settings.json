@@ -4,8 +4,6 @@
         "-DIREE_ENABLE_ASSERTIONS=ON",
         "-DIREE_ENABLE_SPLIT_DWARF=ON",
         "-DIREE_ENABLE_THIN_ARCHIVES=ON",
-        "-DCMAKE_C_COMPILER=/usr/local/Cellar/llvm/22.1.2/bin/clang",
-        "-DCMAKE_CXX_COMPILER=/usr/local/Cellar/llvm/22.1.2/bin/clang++",
         "-DIREE_ENABLE_LLD=ON",
         "-DCMAKE_C_COMPILER_LAUNCHER=ccache",
         "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache",
@@ -15,6 +13,8 @@
         "-DIREE_HAL_DRIVER_LOCAL_SYNC=ON",
         "-DIREE_HAL_DRIVER_LOCAL_TASK=ON",
         "-DIREE_BUILD_PYTHON_BINDINGS=ON",
+        "-DCMAKE_C_COMPILER=/usr/local/Cellar/llvm/22.1.2/bin/clang",
+        "-DCMAKE_CXX_COMPILER=/usr/local/Cellar/llvm/22.1.2/bin/clang++",
         "-DPython3_EXECUTABLE=/Users/alanchen/miniconda3/envs/llm/bin/python",
         "-DCMAKE_INSTALL_PREFIX=/home/alanchen/workspace/iree/install_debug"
     ],
@@ -22,7 +22,7 @@
     "cmake.buildBeforeRun": false,
     "cmake.debugConfig": {
         // iree compile
-        "program": "/home/alanchen/workspace/iree/build/bin/iree-compile",
+        "program": "${workspaceFolder}/build/tools/iree-compile",
         "args": [
             "${workspaceFolder}/alan_iree/converted_mlir/simpy_conv/simpy_conv.mlir",
             "--iree-hal-target-device=local",
